@@ -69,7 +69,7 @@ export default {
   justify-content: space-between;
   text-align: center;
   opacity: 0;
-  transition: all 0.2 ease;
+  transition: all 0.4s ease;
 }
 .movie-title {
   font-size: 20px;
