@@ -33,7 +33,7 @@ export default {
         return this.currentPage;
       },
       set(value) {
-        this.$emit("changePage", value);
+        this.$emit("pageChanged", value);
       },
     },
   },
@@ -42,20 +42,23 @@ export default {
 
 <style scoped>
 .movies-pagination {
-  margin-top: 30px;
+  margin-top: auto;
 }
+
 .movies-pagination >>> .pagination .page-item .page-link {
   background-color: transparent;
   font-size: 12px;
   color: #fff;
   box-shadow: none;
 }
+
 .movies-pagination >>> .pagination .page-item.active .page-link {
   border-color: #fff;
   background-color: #fff;
   color: #000;
 }
-.movies-pagination >>> .pagination .page-item.disbled .page-link {
-  color: lightgrey;
+
+.movies-pagination >>> .pagination .page-item.disabled .page-link {
+  color: lightgray;
 }
 </style>

@@ -1,13 +1,15 @@
 <template>
   <div id="app">
     <Loader />
+    <Notification />
     <PosterBg :poster="posterBg" />
+    <Header />
     <MoviesList :list="moviesList" @changePoster="onChangePoster" />
     <MoviesPagination
       :current-page="currentPage"
       :per-page="moviesPerPage"
       :total="moviesLength"
-      @changePage="onPageChanged"
+      @pageChanged="onPageChanged"
     />
   </div>
 </template>
@@ -18,14 +20,18 @@ import MoviesList from "@/components/MoviesList";
 import PosterBg from "@/components/PosterBg";
 import MoviesPagination from "@/components/MoviesPagination";
 import Loader from "@/components/Loader";
+import Header from "@/components/Header";
+import Notification from "@/components/Notification";
 
 export default {
-  name: "App",
+  name: "app",
   components: {
     MoviesList,
     PosterBg,
     MoviesPagination,
     Loader,
+    Header,
+    Notification,
   },
   data: () => ({
     posterBg: "",
@@ -47,15 +53,14 @@ export default {
   },
   methods: {
     ...mapActions("movies", ["changeCurrentPage"]),
-    onChangePoster(poster) {
-      this.posterBg = poster;
-    },
     onPageQueryChange({ page = 1 }) {
       this.changeCurrentPage(Number(page));
     },
+    onChangePoster(poster) {
+      this.posterBg = poster;
+    },
     onPageChanged(page) {
       this.$router.push({ query: { page } });
-      this.changeCurrentPage(page);
     },
   },
 };
@@ -67,5 +72,8 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 </style>
