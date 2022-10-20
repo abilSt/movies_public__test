@@ -41,16 +41,16 @@ export default {
   props: {
     list: {
       type: Object,
-      default: () => ({}),
-    },
+      default: () => ({})
+    }
   },
   data: () => ({
     movieInfoModalID: "movie-info",
-    selectedMovieID: "",
+    selectedMovieID: ""
   }),
   components: {
     MovieItem,
-    MovieInfoModalContent,
+    MovieInfoModalContent
   },
   computed: {
     ...mapGetters("movies", ["isSearch"]),
@@ -62,7 +62,7 @@ export default {
     },
     selectedMovie() {
       return this.selectedMovieID ? this.list[this.selectedMovieID] : null;
-    },
+    }
   },
   methods: {
     ...mapActions("movies", ["removeMovie"]),
@@ -80,7 +80,7 @@ export default {
         this.showNotify({
           msg: "Movie deleted successful",
           variant: "success",
-          title: "Success",
+          title: "Success"
         });
       }
     },
@@ -91,8 +91,8 @@ export default {
     onCloseModal() {
       this.selectedMovieID = null;
       this.$bvModal.hide(this.movieInfoModalID);
-    },
-  },
+    }
+  }
 };
 </script>
 

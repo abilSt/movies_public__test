@@ -1,4 +1,4 @@
-# movies_publicp
+# moviesapp
 
 ## Project setup
 ```

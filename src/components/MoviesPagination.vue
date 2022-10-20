@@ -16,16 +16,16 @@ export default {
   props: {
     currentPage: {
       type: Number,
-      default: 1,
+      default: 1
     },
     total: {
       type: Number,
-      default: 1,
+      default: 1
     },
     perPage: {
       type: Number,
-      default: 1,
-    },
+      default: 1
+    }
   },
   computed: {
     currentPageModel: {
@@ -34,9 +34,9 @@ export default {
       },
       set(value) {
         this.$emit("pageChanged", value);
-      },
-    },
-  },
+      }
+    }
+  }
 };
 </script>
 

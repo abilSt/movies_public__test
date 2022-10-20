@@ -70,28 +70,28 @@ export default {
   props: {
     movie: {
       type: Object,
-      required: true,
-    },
+      required: true
+    }
   },
   data: () => ({
     defaultPosterBg:
-      "linear-gradient(45deg,rgb(0, 3, 38) 0%,rgb(82, 15, 117) 100%)",
+      "linear-gradient(45deg,rgb(0, 3, 38) 0%,rgb(82, 15, 117) 100%)"
   }),
   computed: {
     posterStyle() {
       return {
-        "background-image": this.posterBg,
+        "background-image": this.posterBg
       };
     },
     posterBg() {
       return this.movie ? `url(${this.movie.Poster})` : this.defaultPosterBg;
-    },
+    }
   },
   methods: {
     closeModal() {
       this.$emit("closeModal");
-    },
-  },
+    }
+  }
 };
 </script>
 

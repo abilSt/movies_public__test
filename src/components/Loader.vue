@@ -1,6 +1,6 @@
 <template>
   <div class="loader-wrap" v-if="isShowLoader">
-    <b-spinner type="grow" variant="light"></b-spinner>
+    <b-spinner type="grow" variant="light" label="Loading..."></b-spinner>
   </div>
 </template>
 
@@ -10,8 +10,8 @@ import { mapGetters } from "vuex";
 export default {
   name: "Loader",
   computed: {
-    ...mapGetters(["isShowLoader"]),
-  },
+    ...mapGetters(["isShowLoader"])
+  }
 };
 </script>
 

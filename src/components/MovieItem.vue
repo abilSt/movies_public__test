@@ -36,27 +36,27 @@ export default {
   props: {
     movie: {
       type: Object,
-      required: true,
-    },
+      required: true
+    }
   },
   computed: {
     posterBg() {
       return {
-        "background-image": `url(${this.movie.Poster})`,
+        "background-image": `url(${this.movie.Poster})`
       };
-    },
+    }
   },
   methods: {
     emitRemoveEvent() {
       this.$emit("removeItem", {
         id: this.movie.imdbID,
-        title: this.movie.Title,
+        title: this.movie.Title
       });
     },
     showInfoModalEvent() {
       this.$emit("showModal", this.movie.imdbID);
-    },
-  },
+    }
+  }
 };
 </script>
 

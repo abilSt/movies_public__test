@@ -18,18 +18,15 @@ const moviesStore = {
     moviesPerPage: 12,
     currentPage: 1,
     movies: {},
-    isSearch: false,
+    isSearch: false
   },
   getters: {
     moviesList: ({ movies }) => movies,
-    slicedIDs:
-      ({ top250IDs }) =>
-      (from, to) =>
-        top250IDs.slice(from, to),
+    slicedIDs: ({ top250IDs }) => (from, to) => top250IDs.slice(from, to),
     currentPage: ({ currentPage }) => currentPage,
     moviesPerPage: ({ moviesPerPage }) => moviesPerPage,
     moviesLength: ({ top250IDs }) => Object.keys(top250IDs).length,
-    isSearch: ({ isSearch }) => isSearch,
+    isSearch: ({ isSearch }) => isSearch
   },
   mutations: {
     [MOVIES](state, value) {
@@ -43,7 +40,7 @@ const moviesStore = {
     },
     [TOGGLE_SEARCH](state, bool) {
       state.isSearch = bool;
-    },
+    }
   },
   actions: {
     async fetchMovies({ getters, commit, dispatch }) {
@@ -54,7 +51,7 @@ const moviesStore = {
         const to = currentPage * moviesPerPage;
         const moviesToFetch = slicedIDs(from, to);
 
-        const requests = moviesToFetch.map((id) => axios.get(`/?i=${id}`));
+        const requests = moviesToFetch.map(id => axios.get(`/?i=${id}`));
         const response = await Promise.all(requests);
         const movies = serializeResponse(response);
         commit(MOVIES, movies);
@@ -69,7 +66,7 @@ const moviesStore = {
       dispatch("fetchMovies");
     },
     removeMovie({ commit, dispatch, state }, id) {
-      const index = state.top250IDs.findIndex((item) => item === id);
+      const index = state.top250IDs.findIndex(item => item === id);
 
       if (index !== -1) {
         commit(REMOVE_MOVIE, index);
@@ -93,7 +90,7 @@ const moviesStore = {
           {
             msg: err.message,
             title: "Error",
-            variant: "danger",
+            variant: "danger"
           },
           { root: true }
         );
@@ -103,8 +100,8 @@ const moviesStore = {
     },
     toggleSearchState({ commit }, bool) {
       commit(TOGGLE_SEARCH, bool);
-    },
-  },
+    }
+  }
 };
 
 export default moviesStore;
